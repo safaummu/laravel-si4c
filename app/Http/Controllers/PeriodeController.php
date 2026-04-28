@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class PeriodeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //akses data fakultas
-        $fakultas = Fakultas::all();
-        dd(%result);//dumb data
-        //kirim data ke view
-        //return view('fakultas.index') --> with ('fakultas', $result);
+        // akses data periode
+        $periode = Periode::all();
+
+        // dumb data
+        // kirim data ke view
+        // return view('fakultas.index') --> with ('fakultas', $result);
         // atau compant
-        return view('fakultas.index', compact('result'));
+        return view('Periode.index', compact('result'));
     }
 
     /**

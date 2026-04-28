@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fakultas;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
-class FakultasController extends Controller
+class BerityaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //akses data fakultas
-        $fakultas = Fakultas::all();
-        dd(%result);//dumb data
-        //kirim data ke view
-        //return view('fakultas.index') --> with ('fakultas', $result);
+        // akses data berita
+        $berita = Berita::all();
+
+        // dumb data
+        // kirim data ke view
+        // return view('berita.index') --> with ('berita', $result);
         // atau compant
-        return view('fakultas.index', compact('result'));
+        return view('Berita.index', compact('result'));
     }
 
     /**
