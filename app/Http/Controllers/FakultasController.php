@@ -14,11 +14,11 @@ class FakultasController extends Controller
     {
         //akses data fakultas
         $fakultas = Fakultas::all();
-        dd(%result);//dumb data
+        //dd(%result);//dumb data
         //kirim data ke view
         //return view('fakultas.index') --> with ('fakultas', $result);
         // atau compant
-        return view('fakultas.index', compact('result'));
+        return view('fakultas.index', compact('fakultas'));
     }
 
     /**

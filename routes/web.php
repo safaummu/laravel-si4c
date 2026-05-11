@@ -10,7 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Fakultas', FakultasController::class);
+Route::resource('fakultas', FakultasController::class);
 Route::resource('Periode', PeriodeController::class);
 Route::resource('/berita', BeritaController::class);
 Route::get('/prodi', [ProdiController::class, 'index']);

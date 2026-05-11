@@ -4,7 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-public function fakultas()
+class Prodi extends Model
 {
-    return $this->belongsTo(Fakultas::class);
+    protected $table = 'prodis';
+
+    public function fakultas()
+    {
+        return $this->belongsTo(Fakultas::class);
+    }
 }
