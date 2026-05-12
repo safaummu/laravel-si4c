@@ -27,7 +27,20 @@ class PeriodeController extends Controller
      */
     public function create()
     {
-        //
+        //validasi data 
+        //    dd($request);
+        $input = $request->validate([
+            'nama'=>'required|unique:fakultas',
+            'Singkatan'=> 'required',
+            'dekan'=> 'required'
+        ]);
+
+
+        //simpan data ke tabel fakultas
+        Fakultas::create($input);
+
+        //redirect ke halaman index fakultas
+        return redirect()->route('fakultas.index');
     }
 
     /**

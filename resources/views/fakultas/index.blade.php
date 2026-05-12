@@ -3,8 +3,9 @@
 @section('title', 'fakultas')
     
 @section('content')
+<a href="{{route('fakultas.create')}}" class="btn btn-primary mb-3">Tambah Fakultas</a>
 <h1>Data Fakultas</h1>
-<table border="table table-border table-hover">
+<table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
         <th>Nama fakultas</th>
@@ -15,8 +16,8 @@
     @foreach($fakultas as $key => $fakultas )
     <tr>
         <td>{{ $key + 1 }}</td>
-        <td>{{ $fakultas->nama_fakultas}}</td>
-        <td>{{ $fakultas->singkatan }}</td>
+        <td>{{ $fakultas->nama}}</td>
+        <td>{{ $fakultas->Singkatan }}</td>
         <td>{{ $fakultas->dekan }}</td>
     </tr>
     @endforeach
