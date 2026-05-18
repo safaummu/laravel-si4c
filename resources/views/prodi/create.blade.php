@@ -1,30 +1,46 @@
 @extends('main')
 
-@section('title','tambah fakultas')
+@section('title')
+    <h1>Tambah Prodi</h1>
+@endsection
 
 @section('content')
-    <form action={{ route('fakultas.store')}} method="post">
+    <a href="{{ route('prodi.index') }}" class="btn btn-secondary mb-3">Kembali</a>
+    <form action="{{ route('prodi.store') }}" method="POST">
         @csrf
-        <div class="m-3">
-            <h5>Form Pengisian Data Fakultas</h5>
-            <label for="nama" class="form-label">Nama Fakultas</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama fakultas..">
-            @error('nama')
-            <div class="text-danger">{{$message}}</div>
+        <div class="mb-3">
+            <label for="nama_prodi" class="form-label">Nama Prodi</label>
+            <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" value="{{ old('nama_prodi') }}" required>
+            @error('nama_prodi')
+                <div class="text-danger">{{ $message }}</div>
             @enderror
-
-            <label for="Singkatan" class="form-label">Singkatan Fakultas</label>
-            <input type="text" class="form-control" id="Singkatan" name="Singkatan" placeholder="Masukkan nama dekan fakultas..">
-            @error('Singkatan')
-            <div class="text-danger">{{$message}}</div>
-            @enderror
-
-            <label for="dekan" class="form-label">Nama Dekan Fakultas</label>
-            <input type="text" class="form-control" id="dekan" name="dekan" placeholder="Masukkan nama dekan fakultas..">
-            @error('dekan')
-            <div class="text-danger">{{$message}}</div>
-            @enderror
-            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
         </div>
+        <div class="mb-3">
+            <label for="singkatan" class="form-label">Singkatan</label>
+            <input type="text" class="form-control" id="singkatan" name="singkatan" value="{{ old('singkatan') }}" maxlength="2" required>
+            @error('singkatan')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="kaprodi" class="form-label">Nama Kaprodi</label>
+            <input type="text" class="form-control" id="kaprodi" name="kaprodi" value="{{ old('kaprodi') }}" maxlength="30" required>
+            @error('kaprodi')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="fakultas_id" class="form-label">Fakultas</label>
+            <select class="form-select" id="fakultas_id" name="fakultas_id" required>
+                <option value="" disabled selected>Pilih Fakultas</option>
+                @foreach ($fakultas as $f)
+                    <option value="{{ $f->id }}" {{ old('fakultas_id') == $f->id ? 'selected' : '' }}>{{ $f->nama}}</option>
+                @endforeach
+            </select>
+            @error('fakultas_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 @endsection

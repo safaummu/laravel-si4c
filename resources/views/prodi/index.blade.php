@@ -1,8 +1,8 @@
 @extends('main')
 
-@section('title', 'Program Studi')
-
+@section('title', 'tambah Program Studi')
 @section('content')
+<a href={{route('prodi.create')}} class="btn btn-primary mb-3">Tambah Program Studi</a>
 <table class="table table-bordered table-hover">
     <tr>
         <th>No</th>
@@ -18,7 +18,7 @@
         <td>{{ $prodi->nama_prodi }}</td>
         <td>{{ $prodi->singkatan }}</td>
         <td>{{ $prodi->kaprodi }}</td>
-        <td>{{ $prodi->fakultas->nama_fakultas ?? '-' }}</td>
+        <td>{{ $prodi->fakultas->nama ?? '-' }}</td>
     </tr>
     @endforeach
 

@@ -13,8 +13,8 @@
 
         @foreach ($result as $item)
             <tr>
-                <td>{{ $item->nama_fakultas }}</td>
-                <td>{{ $item->singkatan }}</td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->Singkatan }}</td>
                 <td>{{ $item->dekan }}</td>
             </tr>
         @endforeach
