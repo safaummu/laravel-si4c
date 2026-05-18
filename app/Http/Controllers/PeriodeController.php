@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fakultas;
+use App\Models\Periode;
 use Illuminate\Http\Request;
 
 class PeriodeController extends Controller
@@ -12,14 +12,10 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        // akses data periode
-        $periode = Periode::all();
-
-        // dumb data
-        // kirim data ke view
-        // return view('fakultas.index') --> with ('fakultas', $result);
-        // atau compant
-        return view('Periode.index', compact('result'));
+        // akses model Periode 
+        $result = Periode::all(); // select * from periode
+        // dd($result);
+        return view('periode.index', compact('result'));
     }
 
     /**
@@ -27,20 +23,7 @@ class PeriodeController extends Controller
      */
     public function create()
     {
-        //validasi data 
-        //    dd($request);
-        $input = $request->validate([
-            'nama'=>'required|unique:fakultas',
-            'Singkatan'=> 'required',
-            'dekan'=> 'required'
-        ]);
-
-
-        //simpan data ke tabel fakultas
-        Fakultas::create($input);
-
-        //redirect ke halaman index fakultas
-        return redirect()->route('fakultas.index');
+        return view('periode.create');
     }
 
     /**
@@ -48,13 +31,23 @@ class PeriodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi data
+        $request->validate([
+            'tahun_akademik' => 'required',
+            'kode_smt' => 'required',
+        ]);
+
+        // simpan data ke database
+        Periode::create($request->all());
+
+        // redirect ke halaman index dengan pesan sukses
+        return redirect()->route('periode.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Fakultas $fakultas)
+    public function show(Periode $periode)
     {
         //
     }
@@ -62,7 +55,7 @@ class PeriodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit(Periode $periode)
     {
         //
     }
@@ -70,7 +63,7 @@ class PeriodeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Fakultas $fakultas)
+    public function update(Request $request, Periode $periode)
     {
         //
     }
@@ -78,7 +71,7 @@ class PeriodeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fakultas $fakultas)
+    public function destroy(Periode $periode)
     {
         //
     }

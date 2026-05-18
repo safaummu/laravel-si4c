@@ -1,25 +1,23 @@
 @extends('main')
 
-@section('title', 'fakultas')
-    
-@section('content')
-<a href="{{route('fakultas.create')}}" class="btn btn-primary mb-3">Tambah Fakultas</a>
-<h1>Data Fakultas</h1>
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>No</th>
-        <th>Nama fakultas</th>
-        <th>Singkatan</th>
-        <th>dekan</th>
-    </tr>
+@section('title', 'Fakultas')
 
-    @foreach($fakultas as $key => $fakultas )
-    <tr>
-        <td>{{ $key + 1 }}</td>
-        <td>{{ $fakultas->nama}}</td>
-        <td>{{ $fakultas->Singkatan }}</td>
-        <td>{{ $fakultas->dekan }}</td>
-    </tr>
-    @endforeach
-</table>
+@section('content')
+    <a href="{{ route('fakultas.create') }}" class="btn btn-primary mb-3">Tambah Fakultas</a>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Nama Fakultas</th>
+            <th>Singkatan</th>
+            <th>Dekan</th>
+        </tr>
+
+        @foreach ($result as $item)
+            <tr>
+                <td>{{ $item->nama_fakultas }}</td>
+                <td>{{ $item->singkatan }}</td>
+                <td>{{ $item->dekan }}</td>
+            </tr>
+        @endforeach
+
+    </table>
 @endsection

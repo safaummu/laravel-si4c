@@ -12,8 +12,8 @@ class ProdiController extends Controller
      */
     public function index()
     {
-       $prodis = Prodi:: with('fakultas')->get();
-       return view('prodi.index',compact('prodis'));
+        $prodis = Prodi::with('fakultas')->get();
+        return view('prodi.index', compact('prodis'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProdiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prodi $prodis)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -43,7 +43,7 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodis)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -51,7 +51,7 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodis)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -59,7 +59,7 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodis)
+    public function destroy(Prodi $prodi)
     {
         //
     }
