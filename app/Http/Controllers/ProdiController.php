@@ -32,8 +32,8 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'nama'=>'required|unique:prodis',
-            'Singkatan'=>'required|max:2',
+            'nama_prodi'=>'required|unique:prodis',
+            'singkatan'=>'required|max:2',
             'kaprodi'=>'required',
             'fakultas_id'=>'required'
         ]);
@@ -62,7 +62,7 @@ class ProdiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $prodi)
     {
         //
     }
@@ -70,8 +70,10 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodi)
+    public function destroy($prodi)
     {
-        //
+        $prodi = Prodi::find($prodi);
+        $prodi->delete();
+        return redirect()->route('prodi.index')->with('success', 'Data Prodi berhasil dihapus');
     }
 }

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->char('kode_smt',1);
+            $table->string('tahun_akademik',9);
         });
     }
 
