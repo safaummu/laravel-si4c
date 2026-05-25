@@ -324,7 +324,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('mahasiswa') }}" class="nav-link">
-                                <i class="nav-icon bi bi-map"></i>
+                                <i class="nav-icon bi bi-person-badge"></i>
                                 <p>Mahasiswa</p>
                             </a>
                         </li>

@@ -10,17 +10,23 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->id();
-            $table->string('npm',11)->unique();
-            $table->string('nama',50);
-            $table->foreign('prodi_id')->constrained()->onDelete('restict');
-            $table->string('foto', 100)->nullable();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('mahasiswas', function (Blueprint $table) {
+        $table->id();
+        $table->string('npm',11)->unique();
+        $table->string('nama',50);
 
+        $table->unsignedBigInteger('prodi_id');
+
+        $table->foreign('prodi_id')
+              ->references('id')
+              ->on('prodis')
+              ->onDelete('restrict');
+
+        $table->string('foto', 100)->nullable();
+        $table->timestamps();
+    });
+}
     /**
      * Reverse the migrations.
      */
