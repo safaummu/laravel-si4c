@@ -23,8 +23,8 @@
                 <td>{{ $item->Singkatan }}</td>
                 <td>{{ $item->dekan }}</td>
             <td>
-           <a href="{{ route('fakultas.edit', $item->id) }}" class="btn btn-xs btn-warning btn-rounded" data-toggle="tooltip" title='Edit'>Edit</a>
-                <form method="POST" action="{{ route('fakultas.destroy', $item->id) }}">
+           <a href="{{ route('fakultas.edit', $item->id) }}" class="btn btn-xs btn-warning btn-rounded" data-toggle="tooltip" title='Edit' class="d-inline">Edit</a>
+                <form method="POST" action="{{ route('fakultas.destroy', $item->id) }}" class="d-inline">
                 @csrf
                 <input name="_method" type="hidden" value="DELETE">
                 <button type="submit" class="btn btn-xs btn-danger btn-rounded show_confirm"

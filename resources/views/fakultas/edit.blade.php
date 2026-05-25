@@ -3,6 +3,7 @@
 @section('title', 'Edit Fakultas')
 
 @section('content')
+hallo
     <form action="{{ route('fakultas.update', $fakultas->id) }}" method="post">
         @method('PUT')
         @csrf
@@ -15,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="Singkatan">Singkatan</label>
-            <input type="text" name="singkatan" class="form-control" value="{{ old('singkatan') ?? $fakultas->Singkatan }}">
+            <input type="text" name="Singkatan" class="form-control" value="{{ old('singkatan') ?? $fakultas->Singkatan }}">
             @error('singkatan')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
