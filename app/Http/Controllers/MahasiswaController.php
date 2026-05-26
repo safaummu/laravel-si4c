@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
 
 class MahasiswaController extends Controller
 {
@@ -33,7 +34,24 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //falidasi input
+        $input = $request->validate([
+            'npm'=> 'required|Unique:mahasiswas,npm', 
+            'nama'=>'required',
+            'prodi_id'=>'required|exists:prodis,id',
+            'foto'=>'nullable|image|max:2048',
+        ]);
+        if($request->hasFile('foto')){
+            $filename = $input['npm']. '.' . $request->file('foto')->getClientOriginalExtension();
+            $input['foto']=$request->file('foto')->storeAs('fotos',$filename,'public');
+        }
+        else{
+            $input['foto']=null;
+        }
+        mahasiswa::create($input);
+
+        return redirect()->route('mahasiswa.index')->with('success','Data Mahasiswa Berhasil disimpan');
+
     }
 
     /**
