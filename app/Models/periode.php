@@ -8,3 +8,5 @@ class Periode extends Model
 {
     protected $fillable = ['tahun_akademik', 'kode_smt'];
 }
+
+//update
