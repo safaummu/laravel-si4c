@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PeriodeController;
+use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,9 +12,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::resource('/fakultas', FakultasController::class)->parameters(['fakultas' => 'fakultas'])->middleware(['auth', 'verified']);
+Route::resource('/periode', PeriodeController::class)->middleware(['auth', 'verified']);
+Route::resource('/prodi', ProdiController::class)->middleware(['auth', 'verified']);
+Route::resource('/mahasiswa', MahasiswaController::class)->middleware(['auth', 'verified']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,3 +26,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
