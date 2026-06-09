@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Periode;
+use App\Models\periode;
 use Illuminate\Http\Request;
 
 class PeriodeController extends Controller
@@ -10,10 +10,11 @@ class PeriodeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    //update lagii
     public function index()
     {
         // akses model Periode 
-        $result = Periode::all(); // select * from periode
+        $result = periode::all(); // select * from periode
         // dd($result);
         return view('periode.index', compact('result'));
     }
@@ -47,7 +48,7 @@ class PeriodeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Periode $periode)
+    public function show(periode $periode)
     {
         //
     }
@@ -55,7 +56,7 @@ class PeriodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Periode $periode)
+    public function edit(periode $periode)
     {
         //
     }
@@ -63,7 +64,7 @@ class PeriodeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Periode $periode)
+    public function update(Request $request, periode $periode)
     {
         //
     }
@@ -71,7 +72,7 @@ class PeriodeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Periode $periode)
+    public function destroy(periode $periode)
     {
         //
     }
